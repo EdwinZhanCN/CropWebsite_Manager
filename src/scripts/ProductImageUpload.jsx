@@ -4,6 +4,9 @@ const FileUpload = () => {
     const [files, setFiles] = useState([]);
     const [fileType, setFileType] = useState('纸盒'); // 默认类型为纸盒
     const [customFileName, setCustomFileName] = useState('product'); // 自定义文件名
+    const [productPrice, setProductPrice] = useState(0); // 产品价格
+    const [productQuantity, setProductQuantity] = useState(0); // 产品数量
+    const [productDescription, setProductDescription] = useState(''); // 产品描述
 
     // 处理文件选择
     const handleFileChange = (event) => {
@@ -32,6 +35,9 @@ const FileUpload = () => {
         Array.from(files).forEach((file) => formData.append('files', file));
         formData.append('fileType', fileType);
         formData.append('customFileName', customFileName);
+        formData.append('productPrice', productPrice);
+        formData.append('productQuantity', productQuantity);
+        formData.append('productDescription', productDescription);
 
         try {
             const response = await fetch('http://localhost:3000/upload', {
@@ -64,6 +70,27 @@ const FileUpload = () => {
                 onChange={handleFileNameChange}
                 style={{display: 'block', marginTop: '10px'}}
             />
+            <input
+                type="number"
+                placeholder="产品价格"
+                value={productPrice}
+                onChange={(event) => setProductPrice(event.target.value)}
+                style={{display: 'block', marginTop: '10px'}}
+            />
+            <input
+                type="number"
+                placeholder="产品数量"
+                value={productQuantity}
+                onChange={(event) => setProductQuantity(event.target.value)}
+                style={{display: 'block', marginTop: '10px'}}
+            />
+            <textarea
+                placeholder="产品描述"
+                value={productDescription}
+                onChange={(event) => setProductDescription(event.target.value)}
+                style={{display: 'block', marginTop: '10px'}}
+            />
+            <br/>
             <button onClick={handleUpload} style={{marginTop: '10px'}}>
                 上传文件
             </button>
