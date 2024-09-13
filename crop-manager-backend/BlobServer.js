@@ -56,7 +56,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
         });
 
         // 将产品信息依次发送到 Java Web 服务
-        const url = 'http://localhost:8080/products';
+        const url = 'http://localhost:8080/api/static/products';
         await Promise.all(
             // 依次发送每个产品信息
             uploadedFileNames.map((newFileName, index) => {
@@ -70,6 +70,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
                     url: `https://${accountName}.blob.core.windows.net/${containerName}/${newFileName}`,
                 }).then((response) => {
                     console.log(`产品 ${productName} 信息添加成功`);
+                    console.log(response.data);
                 }).catch((error) => {
                     console.error(`产品 ${productName} 信息添加失败:`, error);
                 });
