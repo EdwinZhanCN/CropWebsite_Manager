@@ -1,0 +1,42 @@
+/* src/components/ReportIssue.css */
+.report-issue {
+    padding: 20px;
+    background-color: var(--grey-100);
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.report-issue h2 {
+    margin-bottom: 20px;
+}
+
+.report-issue form div {
+    margin-bottom: 10px;
+}
+
+.report-issue label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.report-issue input,
+.report-issue textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--grey-300);
+    border-radius: 4px;
+}
+
+.report-issue button {
+    padding: 10px 20px;
+    background-color: var(--grey-500);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.report-issue button:hover {
+    background-color: var(--grey-700);
+}

@@ -5,8 +5,8 @@ const { BlobServiceClient, StorageSharedKeyCredential } = require('@azure/storag
 const cors = require('cors');
 require('dotenv').config();
 const axios = require('axios');
-
 const app = express();
+app.use(express.json());
 const port = 3000;
 
 // CORS 配置，允许前端访问
@@ -109,6 +109,34 @@ const generateFileName = (index, originalName, type, custom_name) => {
     const fileExtension = originalName.split('.').pop();
     return `${year}${month}${day}_${type}_${custom_name}_${index + 1}.${fileExtension}`;
 };
+
+app.post('/api/report-issue', async (req, res) => {
+    // 确保解析了 JSON 请求体
+    const { title, body } = req.body;
+
+    if (!title || !body) {
+        return res.status(400).send({ message: 'Title and body are required.' });
+    }
+
+    try {
+        const response = await axios.post(
+            'https://api.github.com/repos/EdwinZhanCN/CropWebsite_Manager/issues',
+            { title, body },
+            {
+                headers: {
+                    Authorization: `Bearer ${process.env.GITHUB_ISSUE_TOKEN}`,
+                    'User-Agent': 'YourAppName',
+                },
+            }
+        );
+
+        res.status(201).send({ message: 'Issue submitted successfully!' });
+    } catch (error) {
+        res.status(error.response?.status || 500).send({
+            message: error.response?.data?.message || 'Failed to submit issue.',
+        });
+    }
+});
 
 // 启动服务器
 app.listen(port, () => {
