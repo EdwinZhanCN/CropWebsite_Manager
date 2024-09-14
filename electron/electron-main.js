@@ -5,6 +5,8 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        minWidth: 600,  // 设置窗口的最小宽度
+        minHeight: 450, // 设置窗口的最小高度'
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false, // 如果使用了 preload 脚本，应设置为 true

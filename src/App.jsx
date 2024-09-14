@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import FileUpload from "./services/ProductImageUpload";
-import MainSideBar from "./components/MainPicker";
-import Avatar from "./pages/Avatar";
+import React, { useState } from 'react'
 import "@/root.css";
-import AvatarContainer from "@/components/containers/AvatarContainer";
-import Test from "@/Test";
+import SideBar from "@/components/SideBar";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import MainPicker from "@/components/MainPicker";
+import ReportIssue from "@/components/ReportIssue";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-        <AvatarContainer/>
-    </>
+      <div>
+          <SideBar/>
+          <div style={{paddingLeft:"180px"}}>
+              <ReportIssue/>
+          </div>
+      </div>
   )
 }
 

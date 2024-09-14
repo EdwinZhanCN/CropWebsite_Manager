@@ -1,14 +1,16 @@
 import React from "react";
+import MainPicker from "@/components/MainPicker";
+import AvatarContainer from "@/components/containers/AvatarContainer";
 
 // Define the routes
 const router = [
     {
         path: "/",
-        element: <Main />,
+        element: <MainPicker />,
     },
     {
-        path: "/about",
-        element: <About />,
+        path: "/avatar",
+        element: <AvatarContainer />,
     },
     {
         path: "/contact",

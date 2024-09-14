@@ -3,47 +3,13 @@
     font-family: var(--main-font), sans-serif;
 }
 
-h2{
-    font-size: 2rem;
-    font-weight:  400;
-}
 
-h3{
-    margin:0;
-    padding-top:10px;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-input{
-    margin: 10px 0 0 0;
-    padding: 10px;
-    background: var(--grey-300);
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    width: auto;
-}
-
-small{
-    font-size: 0.8rem;
-    color: #666;
-}
 
 .custom-hr {
     border: none; /* 移除默认的边框样式 */
     border-top: 1px solid #e0e0e0; /* 自定义线条 */
     margin: 10px 0; /* 控制分割线的上下间距 */
     width: 100%; /* 控制宽度 */
-}
-
-button{
-    margin: 10px 0 0 0;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 6px 20px;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .pop-up-reminder{
@@ -85,45 +51,18 @@ select {
     margin: 10px 0;
 }
 
-/* Custom select box styling */
 select {
-    appearance: none; /* Remove default arrow */
-    -webkit-appearance: none; /* Remove default arrow for Safari */
-    -moz-appearance: none; /* Remove default arrow for Firefox */
     background-color: var(--grey-300);
-    border: 1px solid var(--grey-500);
     border-radius: 5px;
     padding: 10px;
     font-size: 1rem;
     color: var(--grey-700);
-    width: 100%;
+    width: auto;
     cursor: pointer;
     margin: 10px 0;
     position: relative;
 }
 
-/* Add a custom arrow */
-select::after {
-    content: '▼';
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-/* Custom option styling */
-option {
-    background-color: var(--grey-100);
-    color: var(--grey-700);
-    padding: 10px;
-    font-size: 1rem;
-}
-
-/* Custom dropdown styling */
-select::-ms-expand {
-    display: none; /* Remove default arrow for IE */
-}
 
 @keyframes slideUp {
     from {
@@ -145,4 +84,11 @@ select::-ms-expand {
         transform: translateY(100%);
         opacity: 0;
     }
+}
+
+.title-view{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

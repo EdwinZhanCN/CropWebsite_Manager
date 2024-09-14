@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "@/style/ProductUpload.css";
 
 const FileUpload = () => {
     const [files, setFiles] = useState([]);
@@ -57,12 +58,14 @@ const FileUpload = () => {
     };
 
     return (
-        <div style={{padding: '20px', maxWidth: '600px', margin: 'auto'}}>
-            <input type="file" multiple onChange={handleFileChange}/>
-            <select value={fileType} onChange={handleTypeChange}>
-                <option value="纸盒">纸盒</option>
-                <option value="塑料盒">塑料盒</option>
-            </select>
+        <div >
+            <div>
+                <input type="file" multiple onChange={handleFileChange}/>
+                <select value={fileType} onChange={handleTypeChange}>
+                    <option value="纸盒">纸盒</option>
+                    <option value="塑料盒">塑料盒</option>
+                </select>
+            </div>
             <input
                 type="text"
                 placeholder="自定义文件名"
@@ -94,6 +97,7 @@ const FileUpload = () => {
             <button onClick={handleUpload} style={{marginTop: '10px'}}>
                 上传文件
             </button>
+
         </div>
     );
 };

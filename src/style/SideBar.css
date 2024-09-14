@@ -1,0 +1,80 @@
+/* src/components/SideBar.css */
+.sidebar {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--picker-grey-100);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar ul li {
+    display: flex;
+    padding: 8px;
+    height: 60px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar ul li a {
+    font-family: var(--main-font), sans-serif;
+    display: flex;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey-700);
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--grey-300);
+}
+
+.avatar-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid var(--grey-500);
+    margin: 10px auto;
+    background-image: url('@/assets/face.jpeg');
+    background-size: cover;
+    cursor: pointer;
+}
+.tool-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--grey-100);
+    border-top: 1px solid var(--grey-300);
+}
+
+.tool-button{
+    background-color: var(--grey-100);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
+}
+
+.tool-button:hover{
+    background-color: var(--grey-500);
+    color: var(--grey-100);
+    border-radius: 30%;
+}

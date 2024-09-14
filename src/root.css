@@ -1,11 +1,69 @@
 :root{
     --main-font: "Helvetica, sans-serif";
+    --low-color: #b5d6ec;
     --primary-color: #4e89bf;
     --secondary-color: #1c486a;
     --grey-100: #f7fafc;
     --grey-300: #e2e8f0;
     --grey-500: #718096;
     --grey-700: #4a5568;
+    --picker-grey-100: #F0F0F0;
+    --picker-grey-200: #D9D9D9;
+
+}
 
 
+h2{
+    font-size: 2rem;
+    font-weight:  400;
+}
+
+h3{
+    margin:0;
+    padding-top:10px;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+input{
+    margin: 10px 0 0 0;
+    padding: 10px;
+    background: var(--grey-300);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: auto;
+}
+
+small{
+    font-size: 0.8rem;
+    color: #666;
+}
+
+button{
+    margin: 0 0 0 0;
+    background-color: var(--grey-100);
+    color: var(--grey-700);
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 5px;
+}
+
+
+
+div{
+    margin:0
+}
+
+ul{
+    margin: 0;
+}
+
+li{
+    margin: 0;
+}
+
+a{
+    margin:0;
 }

@@ -1,0 +1,95 @@
+.picker-background{
+    display: flex;
+    background-color: var(--picker-grey-100);
+    height: 229px;
+    width: 260px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+.picker-view{
+    display: grid;
+    grid-template-areas:
+    "logo nav nav nav nav nav contact contact"
+    " main main main main main main main main"
+    "footer footer footer footer footer footer footeretc footeretc";
+    width: 240px;
+    height: 209px;
+    grid-template-rows: 35px 96px 59px; /* 设置每一行的高度 */
+    gap: 10px;
+}
+
+.picker-view button{
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 8px;
+}
+
+.logo-button{
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-button{
+    grid-area: nav;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.contact-button{
+    grid-area: contact;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.main-button{
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.footer-button{
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.footer-side-button{
+    grid-area: footeretc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}

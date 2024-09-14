@@ -43,10 +43,10 @@ function Avatar({ accountData }) {
                 ...prevErrors,
                 email: 'Email must be a valid email address.',
             }));
-        } else if (name === 'phone' && !/^\d{10}$/.test(value)) {
+        } else if (name === 'phone' && !/^\d{11}$/.test(value)) {
             setErrors((prevErrors) => ({
                 ...prevErrors,
-                phone: 'Phone number must be 10 digits.',
+                phone: 'Phone number must be 11 digits.',
             }));
         } else {
             setErrors((prevErrors) => ({
@@ -91,8 +91,11 @@ function Avatar({ accountData }) {
 
     return (
         <div>
-            <h2>Profile</h2>
-            <hr className="custom-hr" />
+            <div className="title-view">
+                <h2>Profile</h2>
+            </div>
+
+            <hr className="custom-hr"/>
             <div className="edge-view">
                 <h3>Username:</h3>
                 <input
@@ -102,13 +105,13 @@ function Avatar({ accountData }) {
                     onChange={handleInputChange}
                 />
                 {errors.username ?
-                    <small className="error" style={{color:"red"}}>{errors.username}</small>
+                    <small className="error" style={{color: "red"}}>{errors.username}</small>
                     :
-                    <small style={{color:"green", fontSize:"15px"}}>&#x2714;</small>
+                    <small style={{color: "green", fontSize: "15px"}}>&#x2714;</small>
                 }
-                <br />
+                <br/>
                 <small>The username can only be changed within 30 days</small>
-                <br />
+                <br/>
 
                 <h3>Email:</h3>
                 <input
@@ -139,16 +142,12 @@ function Avatar({ accountData }) {
                 <br />
 
                 <h3>Role:</h3>
-                <select
+                <input
+                    type="text"
                     name="role"
                     value={formData.role}
-                    onChange={handleInputChange}
-                >
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                    <option value="visitor">Visitor</option>
-                </select>
-                <br />
+                    disabled
+                />
 
                 {isPopupShown && (
                     <div className={`pop-up-reminder ${isChanged ? 'slide-up' : 'slide-down'}`}>
