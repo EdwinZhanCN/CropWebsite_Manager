@@ -107,7 +107,7 @@ const generateFileName = (index, originalName, type, custom_name) => {
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
     const fileExtension = originalName.split('.').pop();
-    return `${year}${month}${day}_${type}_${custom_name}${index + 1}.${fileExtension}`;
+    return `${year}${month}${day}_${type}_${custom_name}_${index + 1}.${fileExtension}`;
 };
 
 // 启动服务器
