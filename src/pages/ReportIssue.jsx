@@ -1,12 +1,21 @@
 // src/components/ReportIssue.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import MarkdownIt from 'markdown-it';
+import MdEditor from 'react-markdown-editor-lite';
+import 'react-markdown-editor-lite/lib/index.css';
 import '@/style/ReportIssue.css';
+
+const mdParser = new MarkdownIt();
 
 const ReportIssue = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [message, setMessage] = useState('');
+
+    const handleEditorChange = ({ text }) => {
+        setBody(text);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,11 +54,12 @@ const ReportIssue = () => {
                 </div>
                 <div>
                     <label>Body:</label>
-                    <textarea
+                    <MdEditor
                         value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                        required
-                    ></textarea>
+                        style={{ height: '300px' }}
+                        renderHTML={(text) => mdParser.render(text)}
+                        onChange={handleEditorChange}
+                    />
                 </div>
                 <button type="submit">Submit</button>
             </form>

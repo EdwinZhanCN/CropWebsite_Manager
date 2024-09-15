@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import FileUpload from "@/services/ProductImageUpload";
+import ProductUpload from "@/services/ProductUpload";
 import "@/style/MainPicker.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
+import Product from "@/services/Product";
+import Logo from "@/services/Logo";
 
-// 创建三个简单的组件，表示不同的 tab 内容
-function Main() {
-    return <FileUpload />;
-}
 
 function Tab2() {
     return <div>Tab 2 Content</div>;
@@ -23,9 +23,9 @@ function App() {
     const renderTabContent = () => {
         switch (activeTab) {
             case 'main':
-                return <Main />;
-            case 'tab2':
-                return <Tab2 />;
+                return <Product />;
+            case 'logo':
+                return <Logo />;
             case 'tab3':
                 return <Tab3 />;
             default:
@@ -34,7 +34,7 @@ function App() {
     };
 
     return (
-        <div>
+        <div style={{marginLeft:"200px"}}>
             {/* Tab 按钮 */}
             {activeTab === '' ? (
                 <div
@@ -73,14 +73,8 @@ function App() {
                 // 当 activeTab 有值时显示 tab 内容
                 <div>
                     {renderTabContent()}
-                    <button
-                        className="svg-button"
-                        onClick={() => setActiveTab('')}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                            <circle cx="17.5" cy="17.5" r="17" fill="#EAEAEA" stroke="#6D6D6D"/>
-                            <path d="M10 26L25 9M25 26L10 9" stroke="#494949" strokeWidth="2"/>
-                        </svg>
+                    <button className="svg-button" onClick={() => setActiveTab('')}>
+                        <FontAwesomeIcon style={{fontSize: "26px"}} icon={faXmark} />
                     </button>
                 </div>
             )}

@@ -83,7 +83,7 @@ function Avatar({ accountData }) {
             setIsChanged(false);
             setTimeout(() => {
                 setIsPopupShown(false);
-            }, 300);
+            }, 200);
         } else {
             window.alert('Please correct the errors before saving.');
         }
@@ -152,7 +152,7 @@ function Avatar({ accountData }) {
                 {isPopupShown && (
                     <div className={`pop-up-reminder ${isChanged ? 'slide-up' : 'slide-down'}`}>
                         <p>You have unsaved changes.</p>
-                        <button onClick={handleSave} className="save-button">
+                        <button onClick={handleSave}>
                             Save Changes
                         </button>
                     </div>

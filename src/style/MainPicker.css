@@ -1,8 +1,8 @@
 .picker-background{
     display: flex;
     background-color: var(--picker-grey-100);
-    height: 229px;
-    width: 260px;
+    height: 334px;
+    width: 327px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -15,9 +15,9 @@
     "logo nav nav nav nav nav contact contact"
     " main main main main main main main main"
     "footer footer footer footer footer footer footeretc footeretc";
-    width: 240px;
-    height: 209px;
-    grid-template-rows: 35px 96px 59px; /* 设置每一行的高度 */
+    width: 364px;
+    height: 317px;
+    grid-template-rows: 53px 146px 89px; /* 设置每一行的高度 */
     gap: 10px;
 }
 

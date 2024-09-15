@@ -11,7 +11,7 @@ function AvatarContainer() {
     }
 
     return (
-        <div>
+        <div style={{marginLeft:"200px"}}>
             <Avatar accountData={sampleData} />
         </div>
     );

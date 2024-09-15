@@ -1,15 +1,92 @@
 .svg-button {
     display: flex;
-    height: auto;
+    height: 50px;
+    width: 50px;
     position: fixed;
-    top: 30px;
+    top: 10px;
     right: 30px;
     align-items: center;
-    background-color: white;
+    justify-content: center;
     cursor: pointer;
-    padding: 0;
     margin: 0;
     box-shadow: none;
     border-radius: 50%;
+    background-color: var(--grey-100);
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
 }
+
+.svg-button:hover {
+    background-color: var(--grey-500);
+    color: var(--grey-100);
+    border-radius: 30%;
+}
+
+.upload-button {
+    background-color: var(--grey-300);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.upload-button:hover {
+    background-color: var(--grey-500);
+    color: var(--grey-100);
+}
+
+
+.img-upload-style #choose-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--grey-300);
+    text-align: center;
+    cursor: pointer;
+    height: 35px;
+    width: 200px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.img-upload-style #choose-button:hover{
+    background-color: var(--grey-500);
+    color: var(--grey-100);
+}
+
+.img-upload-style select {
+    background-color: var(--low-color);
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid var(--grey-300);
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.img-upload-style #dropdown-box{
+    display: flex;
+    align-items: center;
+}
+
+#dropdown-box a{
+    color: blue;
+    cursor: pointer;
+}
+
+#dropdown-box a:hover{
+    text-decoration: underline;
+}
+
+#product-upload textarea{
+    margin:0;
+    background-color: var(--grey-100);
+    border-radius: 8px;
+    border: none;
+    min-width: 300px;
+    min-height: 100px;
+
+}
+
 

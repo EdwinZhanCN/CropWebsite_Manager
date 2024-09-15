@@ -1,36 +1,24 @@
 import React from "react";
-import MainPicker from "@/components/MainPicker";
+import MainPicker from "@/pages/MainPicker";
 import AvatarContainer from "@/components/containers/AvatarContainer";
+import ReportIssue from "@/pages/ReportIssue";
 
 // Define the routes
 const router = [
     {
+        index: 0,
         path: "/",
         element: <MainPicker />,
     },
     {
+        index: 1,
         path: "/avatar",
         element: <AvatarContainer />,
     },
     {
-        path: "/contact",
-        element: <Contact />,
-    },
-    {
-        path: "/product",
-        element: <Product />,
-    },
-    {
-        path: "/origin",
-        element: <Origin />,
-    },
-    {
-        path: "/news",
-        element: <News />,
-    },
-    {
-        path: "/service",
-        element: <Service />,
+        index: 2,
+        path: "/report",
+        element: <ReportIssue />,
     }
 ];
 

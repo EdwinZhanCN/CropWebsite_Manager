@@ -18,6 +18,7 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    border-radius: 8px;
     bottom: 20px;
     left: 10%;
     width: 70%;
@@ -33,6 +34,14 @@
 
 .pop-up-reminder.slide-down {
     animation: slideDown 0.3s ease-out;
+}
+
+.pop-up-reminder button{
+    background-color: var(--grey-300);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 /* Custom select box styling */

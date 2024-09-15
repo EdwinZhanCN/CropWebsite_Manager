@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React from "react";
 import "@/root.css";
+import router from "@/router";
 import SideBar from "@/components/SideBar";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import MainPicker from "@/components/MainPicker";
-import ReportIssue from "@/components/ReportIssue";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-      <div>
-          <SideBar/>
-          <div style={{paddingLeft:"180px"}}>
-              <ReportIssue/>
-          </div>
-      </div>
+      <Router>
+          <SideBar />
+          <Routes>
+              {router.map((route, index) => (
+                  <Route key={index} path= {route.path} element= {route.element} />
+              ))}
+          </Routes>
+      </Router>
   )
 }
 
