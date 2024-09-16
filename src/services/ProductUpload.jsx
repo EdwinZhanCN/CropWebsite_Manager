@@ -61,7 +61,7 @@ const ProductUpload = () => {
         formData.append('productDescription', productDescription);
 
         try {
-            const response = await fetch('http://localhost:3000/upload', {
+            const response = await fetch('http://localhost:3000/api/blob-upload', {
                 method: 'POST',
                 body: formData,
             });
