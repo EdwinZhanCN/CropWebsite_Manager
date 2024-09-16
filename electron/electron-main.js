@@ -3,8 +3,8 @@ const { app, BrowserWindow } = require('electron');
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 950,
+        height: 650,
         minWidth: 600,  // 设置窗口的最小宽度
         minHeight: 450, // 设置窗口的最小高度'
         webPreferences: {

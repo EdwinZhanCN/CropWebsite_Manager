@@ -2,6 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 
+
+
 // services
 const { upload, uploadFiles } = require('./service/blobUploadService');
 const { getProducts } = require('./service/productService');
@@ -16,6 +18,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const port = 3000;
+
+
+
+
+
 
 // define routes
 app.post('/api/blob-upload', upload.array('files'), uploadFiles);
