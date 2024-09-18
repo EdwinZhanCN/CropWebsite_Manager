@@ -15,7 +15,7 @@ function createWindow() {
     });
 
     if (process.env.MODE === 'development') {
-        mainWindow.loadURL('http://localhost:5173'); // Vite 默认端口
+        mainWindow.loadURL('http://localhost:5000'); // Vite 默认端口
         mainWindow.webContents.openDevTools();
     } else {
         mainWindow.loadFile('./dist/index.html'); // 生产模式下的文件路径
