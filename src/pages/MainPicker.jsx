@@ -4,7 +4,8 @@ import "@/style/MainPicker.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
 import Product from "@/services/Product";
-import Logo from "@/services/Logo";
+import LogoUpdate from "@/services/LogoUpdate";
+import ContactUpdate from "@/services/ContactUpdate";
 
 
 function Tab2() {
@@ -25,9 +26,9 @@ function App() {
             case 'main':
                 return <Product />;
             case 'logo':
-                return <Logo />;
-            case 'tab3':
-                return <Tab3 />;
+                return <LogoUpdate />;
+            case 'contact':
+                return <ContactUpdate />;
             default:
                 return null;
         }

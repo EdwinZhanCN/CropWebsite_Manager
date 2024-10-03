@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function Logo() {
+function LogoUpdate() {
     const [file, setFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null); // 预览图片的 URL
     const [fileName, setFileName] = useState(''); // 文件名
@@ -38,7 +38,7 @@ function Logo() {
             });
 
             if (response.ok) {
-                alert('Logo uploaded successfully');
+                alert('LogoUpdate uploaded successfully');
             } else {
                 alert('Failed to upload logo');
             }
@@ -50,11 +50,11 @@ function Logo() {
 
     return (
         <div className="img-upload-style">
-            <h2>Upload Logo</h2>
+            <h2>Upload LogoUpdate</h2>
             <hr className={"custom-hr"}/>
             <div>
                 <h3>Current logo</h3>
-                <img src={currenLogoUrl} alt="Logo" style={{maxWidth: '30%', height: 'auto'}}/>
+                <img src={currenLogoUrl} alt="LogoUpdate" style={{maxWidth: '30%', height: 'auto'}}/>
                 <br/>
             </div>
             <div>
@@ -85,4 +85,4 @@ function Logo() {
     );
 }
 
-export default Logo;
+export default LogoUpdate;
