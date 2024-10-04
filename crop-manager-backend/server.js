@@ -8,6 +8,8 @@ const cors = require('cors');
 const { upload, uploadFiles } = require('./service/blobUploadService');
 const { getProducts } = require('./service/productService');
 const { reportIssue } = require('./service/reportIssueService');
+const { getContacts } = require('./service/contactService');
+const { updateContacts } = require('./service/contactService');
 
 // config dotenv
 require('dotenv').config();
@@ -28,6 +30,9 @@ const port = 3000;
 app.post('/api/blob-upload', upload.array('files'), uploadFiles);
 app.get('/api/get-products', getProducts);
 app.post('/api/report-issue', reportIssue);
+app.get('/api/get-contacts', getContacts);
+app.post('/api/update-contacts', updateContacts);
+
 
 
 // start the server

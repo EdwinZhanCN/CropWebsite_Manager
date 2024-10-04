@@ -23,6 +23,7 @@ function Product(){
                 if (response.ok) {
                     const res = await response.json();
                     setProducts(res.data);
+                    console.log(res.data);
                 } else {
                     console.error('Failed to fetch products:', response.statusText);
                     setProducts([]);  // Set products to an empty array on error
@@ -47,7 +48,7 @@ function Product(){
             case 'browse':
                 return <ProductBrowser products={products}/>;
             default:
-                return null;
+                return <ProductUpload />;
         }
     };
     return(

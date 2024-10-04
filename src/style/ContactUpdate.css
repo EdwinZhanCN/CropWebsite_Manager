@@ -1,0 +1,33 @@
+.contact-update-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contact-update-list > div {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust the value as needed */
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.contact-new-wrapper{
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    gap: 5px;
+}
+
+.contact-new-wrapper button {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: var(--low-color);
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.contact-new-wrapper button:hover {
+    color: var(--grey-300);
+    background-color: var(--primary-color);
+}

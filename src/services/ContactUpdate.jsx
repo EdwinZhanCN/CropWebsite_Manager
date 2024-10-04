@@ -1,45 +1,30 @@
 import React, { useEffect, useState } from "react";
+import '@/style/ContactUpdate.css';
 
-/**
- * This component is used to update the contact information
- * @returns {Element}
- * @constructor
- * current contact information
- * WhatsApp: string
- * WeChat: QR code
- * Tel: string
- */
 function ContactUpdate() {
-    // sample contact information
-    const data = [
-        {
-            name: "WhatsApp",
-            value: "1234567890",
-            image: null
-        },
-        {
-            name: "WeChat",
-            value: null,
-            image: "https://example.com"
-        },
-        {
-            name: "Tel",
-            value: "0987654321",
-            image: null
-        }
-    ];
-
     const [contact, setContact] = useState([]);
     const [isEdit, setIsEdit] = useState(false);
+    const [newContactName, setNewContactName] = useState('');
+    const [newContactValue, setNewContactValue] = useState('');
 
-    // TODO: use real data from the backend
     useEffect(() => {
         async function fetchContact() {
             try {
-                setContact(data);
+                const response = await fetch('http://localhost:3000/api/get-contacts', {
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    const res = await response.json();
+                    console.log('Contact fetched:', res);
+                    setContact(res);
+                } else {
+                    console.error('Failed to fetch contact:', response.statusText);
+                    setContact([]);
+                }
             } catch (error) {
                 console.error('Error fetching contact:', error);
-                setContact(data);  // Set contact to sample data on error
+                setContact([]);
             }
         }
         fetchContact().then(() => console.log('Contact fetched'));
@@ -56,14 +41,42 @@ function ContactUpdate() {
 
     const submitNewContact = () => {
         setIsEdit(!isEdit);
-        console.log(contact);
+        if (isEdit) {
+            try {
+                fetch('http://localhost:3000/api/update-contacts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(contact),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            } catch (error) {
+                console.error('Error updating contact:', error);
+            }
+        }
+    };
+
+    const addNewContact = () => {
+        if (newContactName && newContactValue) {
+            setContact([...contact, { name: newContactName, value: newContactValue }]);
+            setNewContactName('');
+            setNewContactValue('');
+            setIsEdit(true);
+        }
     };
 
     return (
-        <div>
+        <div className={"contact-update-wrapper"}>
             <h2>Contact Update</h2>
             <hr className="custom-hr" />
-            <div>
+            <div className={"contact-update-list"}>
                 {contact.length === 0 ? (
                     <p>loading...</p>
                 ) : (
@@ -81,9 +94,26 @@ function ContactUpdate() {
                     ))
                 )}
             </div>
-            <button onClick={submitNewContact}>
-                {isEdit ? "Save" : "Edit"}
-            </button>
+
+            <div className={"contact-new-wrapper"}>
+                <h3>Add New Contact</h3>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={newContactName}
+                    onChange={(e) => setNewContactName(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Value"
+                    value={newContactValue}
+                    onChange={(e) => setNewContactValue(e.target.value)}
+                />
+                <button onClick={addNewContact}>Add Contact</button>
+                <button onClick={submitNewContact}>
+                    {isEdit ? "Save" : "Edit"}
+                </button>
+            </div>
         </div>
     );
 }

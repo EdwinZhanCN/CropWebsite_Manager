@@ -40,15 +40,7 @@ const getProducts = async (req, res) => {
         } else {
             console.log('Products not found in cache');
             // 缓存中没有时，从后端获取数据
-            const response = await axios.get('http://localhost:8080/api/static/products');
-            if (response.status === 200) {
-                // 将新获取的数据返回并更新缓存
-                await redisClient.set('products', JSON.stringify(response.data));
-                res.status(200).send(response.data);
-            } else {
-                console.error('Failed to fetch products:', response.statusText);
-                res.status(500).send('Internal server error');
-            }
+            await updateCache();
         }
     } catch (error) {
         console.error('Error fetching products:', error);

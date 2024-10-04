@@ -4,11 +4,14 @@ import "@/style/ProductBroswer.css";
 
 function ProductBrowser({products}) {
     const [searchTerm, setSearchTerm] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
-    // Filter products based on search term
-    const filteredProducts = products.filter(product =>
-        product.product_name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // if products is not null or empty, set filteredProducts to products
+    useEffect(() => {
+        if (products && products.length > 0) {
+            setFilteredProducts(products);
+        }
+    }, [products]);
 
     return (
         <div>
@@ -22,7 +25,7 @@ function ProductBrowser({products}) {
                 onChange={(e) => setSearchTerm(e.target.value)}
             />
             <div style={{display: "flex", flexWrap: "wrap"}}>
-                {filteredProducts.length === 0 ? <small>Loading...</small> : filteredProducts.map((product) => (
+                {filteredProducts.length === 0 || false ? <small>Loading...</small> : filteredProducts.map((product) => (
                     <ProductCard key={product.file_name} product={product}/>
                 ))}
             </div>

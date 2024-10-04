@@ -41,7 +41,8 @@ const ProductUpload = () => {
     // 将文件发送到后端
     const handleUpload = async () => {
         //check the type of the file image, must be jpg or png
-        if (![...files].every(file => ['image/jpeg', 'image/png'].includes(file.type))) {
+        //adding support for avif
+        if (![...files].every(file => ['image/jpeg', 'image/png','image/avif'].includes(file.type))) {
             alert('THE FILE TYPE IS NOT SUPPORTED!');
             return;
         }
