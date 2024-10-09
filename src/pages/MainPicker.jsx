@@ -6,6 +6,7 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons/faXmark";
 import Product from "@/services/Product";
 import LogoUpdate from "@/services/LogoUpdate";
 import ContactUpdate from "@/services/ContactUpdate";
+import EditMain from "@/services/EditMain";
 
 
 function Tab2() {
@@ -23,12 +24,14 @@ function App() {
     // 根据当前的 activeTab 渲染不同的组件
     const renderTabContent = () => {
         switch (activeTab) {
-            case 'main':
-                return <Product />;
             case 'logo':
                 return <LogoUpdate />;
             case 'contact':
                 return <ContactUpdate />;
+            case 'main':
+                return <EditMain />;
+            case 'product':
+                return <Product />;
             default:
                 return null;
         }
@@ -61,6 +64,7 @@ function App() {
                             <button className="logo-button" onClick={() => setActiveTab('logo')}>logo</button>
                             <button className="nav-button" onClick={() => setActiveTab('nav')}>navigation</button>
                             <button className="contact-button" onClick={() => setActiveTab('contact')}>contact</button>
+                            <button className="product-button" onClick={() => setActiveTab('product')}>product</button>
                             <button className="main-button" onClick={() => setActiveTab('main')}>main</button>
                             <button className="footer-button" onClick={() => setActiveTab('footer')}>footer</button>
                             <button className="footer-side-button"

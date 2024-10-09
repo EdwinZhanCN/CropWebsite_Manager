@@ -13,7 +13,7 @@
     display: grid;
     grid-template-areas:
     "logo nav nav nav nav nav contact contact"
-    " main main main main main main main main"
+    " product product product product main main main main"
     "footer footer footer footer footer footer footeretc footeretc";
     width: 364px;
     height: 317px;
@@ -63,6 +63,17 @@
 
 .main-button{
     grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--picker-grey-200);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.product-button{
+    grid-area: product;
     display: flex;
     justify-content: center;
     align-items: center;

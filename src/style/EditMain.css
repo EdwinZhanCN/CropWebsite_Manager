@@ -1,0 +1,11 @@
+.links-holder{
+    display: flex;
+}
+
+.links-holder h3{
+    font-weight: bolder;
+}
+
+.links-holder p{
+    margin: 10px 0 0 10px;
+}

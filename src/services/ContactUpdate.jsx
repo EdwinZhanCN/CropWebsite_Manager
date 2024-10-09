@@ -27,7 +27,7 @@ function ContactUpdate() {
                 setContact([]);
             }
         }
-        fetchContact().then(() => console.log('Contact fetched'));
+        fetchContact().then();
     }, []);
 
     const handleContactChange = (index) => (e) => {
