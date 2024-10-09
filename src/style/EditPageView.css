@@ -1,0 +1,87 @@
+.add-new-button {
+  margin-top: 20px;
+    min-width: 100px;
+    max-width: 400px;
+    min-height: 100px;
+    font-size: 25px;
+    background-color: var(--grey-300);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.add-new-button::after {
+    visibility: collapse;
+    position: absolute;
+    left: 100%;
+    content: '为该页面创建一个新的组件!';
+    color: var(--grey-700);
+    width: fit-content;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 10px;
+    text-align: left;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.add-new-button:hover {
+    background-color: var(--low-color);
+    cursor: pointer;
+}
+
+.add-new-button:hover::after {
+    visibility: visible;
+}
+
+.add-new-box-wrapper {
+    max-width: 400px;
+    max-height: 800px;
+    margin: 20px 0 20px 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey-100);
+    border-radius: 8px;
+}
+
+.edit-component-button{
+    margin-top: 20px;
+    min-width: 100px;
+    max-width: 400px;
+    min-height: 100px;
+    font-size: 25px;
+    background-color: var(--grey-300);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.edit-component-button::after {
+    visibility: collapse;
+    position: absolute;
+    left: 100%;
+    content: '编辑该组件!';
+    color: var(--grey-700);
+    width: fit-content;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 10px;
+    text-align: left;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.edit-component-button:hover {
+    background-color: var(--low-color);
+    cursor: pointer;
+}
+
+.edit-component-button:hover::after {
+    visibility: visible;
+}
