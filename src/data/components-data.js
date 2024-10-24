@@ -11,5 +11,17 @@ export const AllComponents = [
             hashtag: null,
         },
     },
-    {name:"TextBlock"},
+    {
+        name:"TextBlock"
+    },
+    {
+        name: 'News',
+        description: 'A news component',
+        props: {
+            title: 'Title',
+            date: 'Date',
+            short:' This is a short description',
+            content: null,
+        },
+    }
 ];

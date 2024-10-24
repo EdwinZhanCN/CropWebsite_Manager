@@ -10,6 +10,7 @@ const { getProducts } = require('./service/productService');
 const { reportIssue } = require('./service/reportIssueService');
 const { getContacts } = require('./service/contactService');
 const { updateContacts } = require('./service/contactService');
+const { newsUploader, uploadNews } = require('./service/newsUploadService');
 
 // config dotenv
 require('dotenv').config();
@@ -32,7 +33,7 @@ app.get('/api/get-products', getProducts);
 app.post('/api/report-issue', reportIssue);
 app.get('/api/get-contacts', getContacts);
 app.post('/api/update-contacts', updateContacts);
-
+app.post('/api/news-upload', newsUploader.array('files'), uploadNews);
 
 
 // start the server

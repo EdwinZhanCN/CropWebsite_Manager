@@ -2,6 +2,10 @@ import React, {useState}from "react";
 
 function UploadNewsDoc() {
     const [files, setFiles] = useState([]);
+    //custom file name is the title of the news
+    const [customFileName, setCustomFileName] = useState("");
+    // const [newsDescription, setNewsDescription] = useState("");
+    const [newsDate, setNewsDate] = useState("");
 
     const handleDrop = (e) => {
         e.preventDefault();
@@ -26,6 +30,48 @@ function UploadNewsDoc() {
         } else {
             alert('选择成功！');
             setFiles(Array.from(files));
+        }
+    };
+
+    const handleUpload = async () => {
+        //check the type of the file image, must be jpg or png
+        //adding support for avif
+        if (![...files].every(file => ['text/markdown'].includes(file.type))) {
+            alert('THE FILE TYPE IS NOT SUPPORTED!');
+            return;
+        }
+
+        if (files.length === 0) {
+            alert('Please Select the IMAGE！');
+            return;
+        }
+
+        const formData = new FormData();
+        Array.from(files).forEach((file) => formData.append('files', file));
+        formData.append('customFileName', customFileName);
+        // formData.append('newsDescription', newsDescription);
+        formData.append('newsDate', newsDate);
+
+        //check if all the fields are filled
+        if (!customFileName || !newsDate) {
+            alert('请填写所有字段！');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/news-upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                alert('文件上传成功');
+            } else {
+                alert('文件上传失败');
+            }
+        } catch (error) {
+            console.error('上传文件时出错:', error);
+            alert('上传文件时出错，请检查控制台获取详细信息');
         }
     };
 
@@ -65,7 +111,6 @@ function UploadNewsDoc() {
                 >
                     选择文件
                 </label>
-
             </div>
             <hr className={"custom-hr"}/>
             <ul>
@@ -76,15 +121,28 @@ function UploadNewsDoc() {
             {files.length > 0 && (
                 <div>
                     <div>
-                        <input type="text"/>
+                        <input
+                            type="text"
+                            value={customFileName}
+                            onChange={(e) => setCustomFileName(e.target.value)}
+                        />
                         <label>-标题</label>
-                        <input type="text" placeholder="yyyy-mm-dd"/>
+                        <input
+                            type="text"
+                            placeholder="yyyy-mm-dd"
+                            value={newsDate}
+                            onChange={(e) => setNewsDate(e.target.value)}
+                        />
                         <label>-日期</label>
-                        <textarea/><label>描述</label>
-
+                        {/*<textarea/><label>描述</label>*/}
                     </div>
                     <hr className={"custom-hr"}/>
-                    <button className={"upload-button"}>上传</button>
+                    <button
+                        className={"upload-button"}
+                        onClick={handleUpload}
+                    >
+                        上传
+                    </button>
                 </div>
             )}
         </div>

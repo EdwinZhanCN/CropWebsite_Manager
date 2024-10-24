@@ -100,6 +100,20 @@ export const links = [
         id:4,
         url:'/news',
         text:'新闻动态',
+        components: [
+            {
+                id: 1,
+                custom_name: 'news',
+                name: 'News',
+                description: 'A news component',
+                props: {
+                    title: 'Title',
+                    date: 'Date',
+                    short:' This is a short description',
+                    content: null,
+                },
+            },
+        ]
     },
     {
         id:5,
