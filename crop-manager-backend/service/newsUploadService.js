@@ -4,9 +4,9 @@ const axios = require('axios');
 require('dotenv').config();
 
 // define the azure blob account information using .env file
-const accountName = process.env.AZURE_FILE_ACCOUNT_NAME;
-const accountKey = process.env.AZURE_FILE_ACCOUNT_KEY;
-const containerName = process.env.AZURE_FILE_SHARE_NAME;
+const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
+const containerName = "news-doc";
 
 // get a SAS key from azure and write the file into storage contianer
 const sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
@@ -44,46 +44,62 @@ const generateFileName = (index, originalName, custom_name, date) => {
 const uploadNews = async (req, res) => {
     const files = req.files;
     const newsName = req.body.customFileName || 'news';
-    // const newsDescription = req.body.newsDescription || 'This is a sample description';
     const newsDate = req.body.newsDate || '0000-00-00';
+    const newsDescription = req.body.newsDescription || 'This is a sample description';
 
     if (!files || files.length === 0) {
         return res.status(400).send('没有文件被上传');
     }
 
     try {
+        let azureMsg = '';
+        let databaseMsg = '';
+
+        // 文件上传到 Azure Blob Storage
         const uploadedFileNames = await Promise.all(
             files.map((file, index) => uploadFile(containerClient, file, index, newsName, newsDate))
         );
 
-        res.status(200).send({
-            message: '所有文件上传成功',
-            fileNames: uploadedFileNames
+        azureMsg = '所有文件成功上传至 Azure Blob Storage';
+
+        // 构建新闻数据列表
+        const newsList = uploadedFileNames.map((newFileName) => ({
+            title: newsName,
+            fileUrl: `https://${accountName}.blob.core.windows.net/${containerName}/${newFileName}`,
+            date: new Date().toISOString().split('T')[0], // 当前日期（格式为 YYYY-MM-DD）
+            shortText: newsDescription
+        }));
+
+        const url = 'http://localhost:8080/api/static/news';
+
+        // 发送新闻数据到数据库
+        await axios.post(url, newsList.length === 1 ? [newsList[0]] : newsList, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            databaseMsg = '新闻信息成功添加至数据库';
+            console.log(response.data);
+        }).catch((error) => {
+            databaseMsg = '新闻信息添加至数据库失败';
+            console.error(error);
         });
 
-        // const url = 'http://localhost:8080/api/static/products';
-        // await Promise.all(
-        //     uploadedFileNames.map((newFileName, index) => {
-        //         return axios.post(url, {
-        //             upload_date: new Date().toISOString(),
-        //             file_name: newFileName,
-        //             product_name: productName,
-        //             price: productPrice,
-        //             quantity: productQuantity,
-        //             description: productDescription,
-        //             url: `https://${accountName}.blob.core.windows.net/${containerName}/${newFileName}`,
-        //         }).then((response) => {
-        //             console.log(`产品 ${productName} 信息添加成功`);
-        //             console.log(response.data);
-        //         }).catch((error) => {
-        //             console.error(`产品 ${productName} 信息添加失败:`, error);
-        //         });
-        //     })
-        // );
+        // 发送响应，包括 Azure 和数据库状态消息
+        res.status(200).send({
+            message: '操作完成',
+            azureMsg: azureMsg,
+            databaseMsg: databaseMsg,
+            fileNames: uploadedFileNames
+        });
     } catch (error) {
         console.error('上传文件时出错:', error);
-        res.status(500).send('文件上传失败');
+        res.status(500).send({
+            message: '文件上传失败',
+            error: error.message
+        });
     }
+
 };
 
 module.exports = { newsUploader, uploadNews };

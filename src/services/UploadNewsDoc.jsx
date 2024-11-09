@@ -4,7 +4,7 @@ function UploadNewsDoc() {
     const [files, setFiles] = useState([]);
     //custom file name is the title of the news
     const [customFileName, setCustomFileName] = useState("");
-    // const [newsDescription, setNewsDescription] = useState("");
+    const [newsDescription, setNewsDescription] = useState("");
     const [newsDate, setNewsDate] = useState("");
 
     const handleDrop = (e) => {
@@ -49,7 +49,7 @@ function UploadNewsDoc() {
         const formData = new FormData();
         Array.from(files).forEach((file) => formData.append('files', file));
         formData.append('customFileName', customFileName);
-        // formData.append('newsDescription', newsDescription);
+        formData.append('newsDescription', newsDescription);
         formData.append('newsDate', newsDate);
 
         //check if all the fields are filled
@@ -134,7 +134,11 @@ function UploadNewsDoc() {
                             onChange={(e) => setNewsDate(e.target.value)}
                         />
                         <label>-日期</label>
-                        {/*<textarea/><label>描述</label>*/}
+                        <textarea
+                            value={newsDescription}
+                            onChange={(e) => setNewsDescription(e.target.value)}
+                        />
+                        <label>描述</label>
                     </div>
                     <hr className={"custom-hr"}/>
                     <button
