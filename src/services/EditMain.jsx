@@ -3,6 +3,7 @@ import {links} from "@/data/data";
 import "@/style/EditMain.css";
 import EditPageView from "@/components/EditPageView";
 import UploadNewsDoc from "@/services/UploadNewsDoc";
+import EditOriginView from "@/components/EditOriginView";
 
 function EditMain() {
     const [isTabOpen, setIsTabOpen] = useState(false);
@@ -12,6 +13,9 @@ function EditMain() {
         if (isTabOpen && selectedLink.length !== 0) {
             if(selectedLink.text === "新闻动态") {
                 return <UploadNewsDoc />;
+            }
+            if (selectedLink.text === "生产地") {
+                return <EditOriginView />;
             }
             return <EditPageView link={selectedLink} />;
         }else return null;

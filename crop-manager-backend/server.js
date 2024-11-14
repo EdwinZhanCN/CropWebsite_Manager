@@ -11,6 +11,7 @@ const { reportIssue } = require('./service/reportIssueService');
 const { getContacts } = require('./service/contactService');
 const { updateContacts } = require('./service/contactService');
 const { newsUploader, uploadNews } = require('./service/newsUploadService');
+const { getNews } = require('./service/newsService');
 
 // config dotenv
 require('dotenv').config();
@@ -34,6 +35,7 @@ app.post('/api/report-issue', reportIssue);
 app.get('/api/get-contacts', getContacts);
 app.post('/api/update-contacts', updateContacts);
 app.post('/api/news-upload', newsUploader.array('files'), uploadNews);
+app.get('/api/get-news', getNews);
 
 
 // start the server

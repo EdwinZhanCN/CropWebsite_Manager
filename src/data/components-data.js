@@ -23,5 +23,16 @@ export const AllComponents = [
             short:' This is a short description',
             content: null,
         },
+    },
+    {
+        name: 'parallaxItem',
+        description: 'Image and text parallax view',
+        props: {
+            img: null,
+            title: 'Title',
+            detailTitle: 'Detail Title',
+            detail: 'Detail',
+            link: null,
+        },
     }
 ];

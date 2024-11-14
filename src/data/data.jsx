@@ -94,7 +94,22 @@ export const links = [
     {
         id:3,
         url: '/origin',
-        text:'生产地'
+        text:'生产地',
+        components: [
+            {
+                id: 1,
+                custom_name: 'parallax-view-item',
+                name: 'parallaxItem',
+                description: 'Image and text parallax view',
+                props: {
+                    img: null,
+                    title: 'Title',
+                    detailTitle: 'Detail Title',
+                    detail: 'Detail',
+                    link: null,
+                },
+            },
+        ]
     },
     {
         id:4,
