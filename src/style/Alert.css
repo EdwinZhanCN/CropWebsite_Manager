@@ -1,0 +1,19 @@
+.alert {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateY(-180%);
+    transition: transform 0.3s ease;
+    max-width: 400px;
+    background-color: darkred;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 999;
+    margin-top: 20px;
+}
+
+.alert.show {
+    transform: translate(-50%, 0);
+}

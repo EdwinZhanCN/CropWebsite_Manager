@@ -19,7 +19,7 @@ const SideBar = () => {
                 <li><a>Contact</a></li>
             </ul>
             <div className="tool-container">
-                <button className="tool-button">
+                <button className="tool-button" onClick={() => navigate("/setting")}>
                     <FontAwesomeIcon style={{fontSize:"20px"}} icon={"gear"} />
                 </button>
                 <button className="tool-button" onClick={() => navigate("/report")}>

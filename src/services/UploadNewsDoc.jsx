@@ -1,4 +1,4 @@
-import React, {useState}from "react";
+import React, {useEffect, useState} from "react";
 
 function UploadNewsDoc() {
     const [files, setFiles] = useState([]);
@@ -6,6 +6,33 @@ function UploadNewsDoc() {
     const [customFileName, setCustomFileName] = useState("");
     const [newsDescription, setNewsDescription] = useState("");
     const [newsDate, setNewsDate] = useState("");
+    const [news, setNews] = useState([]);
+
+
+    // Fetch products from the backend
+    useEffect(() => {
+        async function fetchProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/api/get-news', {
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    const res = await response.json();
+                    setNews(res.data);
+                    console.log(res.data);
+                } else {
+                    console.error('Failed to fetch news:', response.statusText);
+                    setNews([]);  // Set products to an empty array on error
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                setNews([]);  // Set products to an empty array on error
+            }
+        }
+
+        fetchProducts().then(() => console.log('Products fetched'));
+    }, []);  // Empty dependency array to run useEffect only once
 
     const handleDrop = (e) => {
         e.preventDefault();
@@ -147,6 +174,20 @@ function UploadNewsDoc() {
                     >
                         上传
                     </button>
+                </div>
+            )}
+            {news.length > 0 && (
+                <div>
+                    <h2>Existing News</h2>
+                    <ul>
+                        {news.map((item) => (
+                            <li key={item.id}>
+                                <h3>标题: {item.title}</h3>
+                                <p>日期: {item.date}</p>
+                                <p>描述: {item.shortText}</p>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             )}
         </div>
